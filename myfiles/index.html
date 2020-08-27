@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #editor {
+            /* position: relative; */
+            width: 750px;
+            height: 320px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>添加一本数据</h1>
+    <p>书籍名称：<input type="text" id="bName"></p>
+    <div>书籍描述：
+        <!-- 富文本框 -->
+        <div id="editor"></div>
+    </div>
+    <p>
+        <button>提交</button>
+    </p>
+    <script src="//unpkg.com/wangeditor/release/wangEditor.min.js"></script>
+    <script>
+        const E = window.wangEditor
+        const editor = new E('#editor')
+        editor.create()
+
+        function $(selector) {
+            return document.querySelector(selector);
+        }
+        async function addBook() {
+            const name = $("#bName").value;
+            const text = editor.txt.html();
+            console.log('name', name);
+            console.log('text', text);
+        }
+        $("button").onclick = addBook;
+    </script>
+</body>
+
+</html>
